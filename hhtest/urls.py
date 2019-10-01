@@ -18,13 +18,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 from insta import views
-from insta.views import Create, VideoCreate, CreateOctagon, news
+from insta.views import Create, VideoCreate, CreateOctagon, news, quote
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Create.as_view(), name='home'),
     url(r'news', news, name='news'),
     url(r'^octagon/$', CreateOctagon.as_view(), name='octagon'),
+    url(r'^quote/$', quote, name='quote'),
     url(r'^octagon/newoctagon/$', views.newoctagon, name='newoctagon'),
     url(r'^newpost/$', views.newpost, name='newpost'),
     url(r'^video/$', VideoCreate.as_view(), name='video'),

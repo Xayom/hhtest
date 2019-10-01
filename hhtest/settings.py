@@ -25,7 +25,7 @@ SECRET_KEY = '2ewg^x)i34jyxf5i_=2pj-w@y9xwj(#xo@o&$mzsm+qa*3e+1v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'gamer.pythonanywhere.com']
+ALLOWED_HOSTS = [u'gamer.pythonanywhere.com', 'localhost', '127.0.0.1:8000', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'insta',
     'bootstrapform',
+    'croppie',
 ]
 
 MIDDLEWARE = [
