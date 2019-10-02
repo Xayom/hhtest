@@ -10,18 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/demo.css" %}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
-
-    <script>document.documentElement.className = 'js';</script>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-7243260-2']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-        </script>
 </head>
 <body>
     <div class="row">
@@ -32,20 +20,10 @@
         <div class="col-md-6 mb-2">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-{#                {{ addform }}#}
                 {{ form|bootstrap_horizontal }}
                 <div class="row">
                     <div id="cropper"></div>
                 </div>
-{#                <div class="form-group row">#}
-{#                    <label class="col-sm-3 col-form-label text-left">肖芯褌芯*</label>#}
-{#                    <div class="col-sm-9">#}
-{#                        <div class="row">#}
-{#                            <div id="cropper"></div>#}
-{#                            {{ form.img }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
                 <button type="submit" class="ml-3 btn btn-primary">Сохранить</button>
             </form>
         </div>
@@ -59,22 +37,8 @@
         function goBack() {
             window.history.back();
         }
-        $("textarea").on('keyup', function () {
-            var txt = $(this).val();
-
-            $.ajax({
-               type: "POST",
-               url: "",
-               data: {'txt': txt, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
-               dataType: "json",
-               success: function(response) {
-                   d = new Date();
-                   $("#img-out").attr("src", "/media/out.png?"+d.getTime());
-               },
-                error: function(rs, e) {
-                }
-             });
-        });
+        var d = new Date();
+        $("#img-out").attr("src", "/media/out_quote.png?"+d.getTime());
     </script>
 </body>
 </html>

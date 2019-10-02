@@ -22,4 +22,4 @@ class AddQuote(forms.ModelForm):
 
     class Meta:
         model = Quote
-        fields = ('description', 'img', 'author', 'position')
+        fields = ('description', 'author', 'position', 'img')
