@@ -170,7 +170,7 @@ def quote(request):
         im.putalpha(mask)
 
         out = Image.open(os.path.join(BASE_DIR, 'media', 'quote.png'), 'r')
-        out.paste(im, (125, 1020), im)
+        out.paste(im, (120, 980), im)
         out.save(os.path.join(BASE_DIR, 'media', 'out_quote.png'))
 
         quote = Image.open(os.path.join(BASE_DIR, 'media', 'out_quote.png'), 'r')
@@ -179,13 +179,13 @@ def quote(request):
         font1 = ImageFont.truetype(os.path.join(BASE_DIR, 'media', 'Alegreya-Regular.ttf'), 40)
         draw = ImageDraw.Draw(quote)
         h = 550
-        w = 1250
+        w = 1200
         draw.text((h, w), last.author.upper(), (0, 0, 0), font=font)
         draw.text((h, w + 80), last.position.upper(), (0, 0, 0), font=font1)
 
         last.description = last.description.upper()
         for sz in range(45, 80):
-            h = 420
+            h = 450
             w = 0
             for text in last.description.replace('\r\n', ' ').split(' '):
                 font = ImageFont.truetype(os.path.join(BASE_DIR, 'media', 'Alegreya-BoldItalic.ttf'), sz)
@@ -198,7 +198,7 @@ def quote(request):
                 break
         print(w)
         w = (1100 - w) / 2
-        h = 420
+        h = 450
         print(h)
         print(w)
         print(sz)
@@ -206,7 +206,7 @@ def quote(request):
             font = ImageFont.truetype(os.path.join(BASE_DIR, 'media', 'Alegreya-BoldItalic.ttf'), sz)
             (width, baseline), (offset_x, offset_y) = font.font.getsize(text)
             if h + width + 30 > bg_w:
-                h = 420
+                h = 450
                 w += 80
             draw.text((h, w), text, (255, 255, 255), font=font)
             h += width + 30
