@@ -1,31 +1,52 @@
 {% load staticfiles %}
 {% load bootstrap %}
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Инстаграм</title>
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/demo.css" %}"/>
+{#    <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "css/demo.css" %}"/>#}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-6">
-            <h5>Последняя обработанная фотка</h5>
-            <img class="img-fluid w-50" id="img-out" src="/media/out.png">
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Tajikistan News</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Новости</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'quote' %}">Высказывания</a>
+            </li>
+          </ul>
         </div>
-        <div class="col-md-6 mb-2">
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form|bootstrap_horizontal }}
-                <button type="submit" class="ml-3 btn btn-primary" >Сохранить</button>
-            </form>
-        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+        <div class="row card-box mt-5 p-3">
+            <div class="col-md-6">
+                <h5>Последняя обработанная фотка</h5>
+                <img class="img-fluid w-100" id="img-out" src="/media/out.png">
+            </div>
+            <div class="col-md-6 mb-2">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|bootstrap_horizontal }}
+                    <button type="submit" class="ml-3 btn btn-primary" >Сохранить</button>
+                </form>
+            </div>
 
-    </div>
+        </div>
+    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
